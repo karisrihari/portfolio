@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Kari Srihari — Portfolio</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    /* ============ CSS (merged) ============ */
+    :root{
+      --bg:#0f1724; --card:#0b1220; --muted:#9aa6b2;
+      --accent:#5dd39e; --text:#e6eef6; --glass:rgba(255,255,255,0.03);
+      --radius:12px; --container:1100px;
+      font-family:"Inter",system-ui;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:linear-gradient(180deg,#071024 0%,#061422 100%);
+      color:var(--text);line-height:1.5;font-size:16px;}
+    .container{max-width:var(--container);margin:0 auto;padding:1.25rem;}
+    .site-header{position:sticky;top:0;z-index:40;backdrop-filter:blur(6px);
+      border-bottom:1px solid rgba(255,255,255,0.03);
+      background:linear-gradient(180deg,rgba(2,6,23,0.6),rgba(2,6,23,0.35));}
+    .header-inner{display:flex;gap:1rem;align-items:center;justify-content:space-between}
+    .logo{font-weight:700;color:var(--text);text-decoration:none;font-size:1.05rem}
+    .nav{display:flex;gap:0.5rem;align-items:center}
+    .nav a{color:var(--muted);text-decoration:none;padding:0.45rem 0.6rem;
+      border-radius:8px;transition:.18s;font-size:0.95rem}
+    .nav a:hover{color:var(--text);background:var(--glass)}
+    .btn-outline{border:1px solid rgba(255,255,255,0.06);padding:0.45rem 0.7rem;
+      border-radius:8px;color:var(--text)}
+    .nav-toggle{display:none;background:none;border:0;color:var(--text);font-size:1.1rem}
+    .hero{padding:3.2rem 0}
+    .hero-grid{display:grid;grid-template-columns:1fr 320px;gap:1.25rem}
+    .hero-text h1{margin:0;font-size:2rem}
+    .lead{color:var(--muted);margin-top:0.5rem}
+    .meta{list-style:none;padding:0;margin:1rem 0 0 0;color:var(--muted)}
+    .meta li{display:inline-block;margin-right:0.9rem;font-size:0.95rem}
+    .hero-card{background:var(--glass);padding:1rem;border-radius:var(--radius);
+      border:1px solid rgba(255,255,255,0.03)}
+    .card-inner dt{font-weight:600;margin-top:0.6rem}
+    .section{padding:2.25rem 0}
+    .section-alt{background:rgba(255,255,255,0.01);
+      border-top:1px solid rgba(255,255,255,0.02);
+      border-bottom:1px solid rgba(255,255,255,0.02)}
+    .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem}
+    .project-card{background:var(--card);padding:1rem;border-radius:10px;border:1px solid rgba(255,255,255,0.02);
+      display:flex;flex-direction:column;justify-content:space-between}
+    .muted{color:var(--muted);font-size:0.95rem}
+    .btn-link{background:none;border:0;color:var(--accent);cursor:pointer;padding:0;font-weight:600}
+    .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem}
+    .skill{background:var(--card);padding:1rem;border-radius:10px;border:1px solid rgba(255,255,255,0.02)}
+    .edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+    .edu-card{background:var(--card);padding:1rem;border-radius:10px;border:1px solid rgba(255,255,255,0.02)}
+    .contact-grid{display:grid;grid-template-columns:1fr 420px;gap:1.25rem}
+    .contact-form{background:var(--card);padding:1rem;border-radius:10px;border:1px solid rgba(255,255,255,0.02)}
+    .contact-form label{display:block;margin-bottom:0.6rem}
+    .contact-form span{display:block;margin-bottom:0.375rem;color:var(--muted)}
+    .contact-form input,.contact-form textarea{width:100%;padding:0.6rem;border-radius:8px;background:transparent;
+      border:1px solid rgba(255,255,255,0.04);color:var(--text)}
+    .form-actions{display:flex;gap:0.6rem;margin-top:0.6rem}
+    .form-status{margin-top:0.6rem;color:var(--muted)}
+    .btn-primary{background:linear-gradient(90deg,var(--accent),#3ecf9d);color:#04221a;
+      padding:0.6rem 0.9rem;border-radius:8px;font-weight:700;text-decoration:none}
+    .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);
+      padding:0.6rem 0.9rem;color:var(--text);border-radius:8px}
+    .site-footer{padding:1.25rem 0;border-top:1px solid rgba(255,255,255,0.02)}
+    .footer-inner{display:flex;align-items:center;justify-content:space-between}
+    .footer-inner p{margin:0;color:var(--muted)}
+    .social a{color:var(--muted);margin-left:0.6rem}
+    .modal{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;
+      background:rgba(2,6,23,0.65);padding:1rem;opacity:0;pointer-events:none;transition:.18s}
+    .modal[aria-hidden="false"]{opacity:1;pointer-events:auto}
+    .modal-content{background:#07121a;padding:1rem;border-radius:12px;width:min(880px,95%);max-height:85vh;overflow:auto}
+    .modal-close{background:none;border:0;color:var(--muted);font-size:1.1rem;float:right}
+    @media(max-width:900px){.hero-grid{grid-template-columns:1fr}
+      .edu-grid{grid-template-columns:1fr}
+      .contact-grid{grid-template-columns:1fr}
+      .nav{display:none;position:absolute;right:1.25rem;top:64px;background:rgba(2,6,23,0.9);
+        flex-direction:column;padding:0.6rem;border-radius:8px}
+      .nav a{display:block}
+      .nav-toggle{display:block}}
+  </style>
+</head>
+<body>
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="logo" href="#hero">Kari Srihari</a>
+    <nav class="nav" id="nav">
+      <a href="#about">About</a><a href="#projects">Projects</a>
+      <a href="#skills">Skills</a><a href="#education">Education</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button id="nav-toggle" aria-label="Toggle nav" class="nav-toggle"><i class="fa fa-bars"></i></button>
+  </div>
+</header>
+
+<main>
+  <section id="hero" class="hero">
+    <div class="container hero-grid">
+      <div class="hero-text">
+        <h1>Hi — I'm Kari Srihari</h1>
+        <p class="lead">Computer Science graduate | Aspiring Software Engineer</p>
+        <ul class="meta">
+          <li><i class="fa fa-map-marker-alt"></i> Andhra Pradesh</li>
+          <li><i class="fa fa-phone"></i> +91 89787 83886</li>
+          <li><i class="fa fa-envelope"></i> <a href="mailto:Karisriharri@gmail.com">Karisriharri@gmail.com</a></li>
+        </ul>
+        <p><a class="btn-primary" href="#projects">View Projects</a></p>
+      </div>
+      <div class="hero-card"><div class="card-inner">
+        <h3>Quick facts</h3>
+        <dl><dt>Degree</dt><dd>B.Tech, CSE (2024)</dd>
+            <dt>CGPA</dt><dd>7.01</dd>
+            <dt>DOB</dt><dd>13 Aug 2003</dd>
+            <dt>Languages</dt><dd>Telugu, English</dd></dl>
+      </div></div>
+    </div>
+  </section>
+
+  <section id="about" class="section">
+    <div class="container"><h2>About Me</h2>
+      <p>Motivated Computer Science graduate with skills in Python, web dev, databases, machine learning, and cloud. Completed internships in Salesforce and ML, certified in Azure and Power Platform.</p>
+    </div>
+  </section>
+
+  <section id="projects" class="section section-alt">
+    <div class="container"><h2>Projects</h2>
+      <div class="projects-grid">
+        <article class="project-card"><div><h3>Crop Recommendation System</h3>
+          <p class="muted">Machine Learning</p>
+          <p>Recommends crops using soil & weather parameters.</p></div>
+          <div><button class="btn-link" data-open="crop">View details</button></div>
+        </article>
+        <article class="project-card"><div><h3>Awareness of Ayurvedic</h3>
+          <p class="muted">Angular Web Platform</p>
+          <p>Spreads awareness about Ayurvedic practices.</p></div>
+          <div><button class="btn-link" data-open="ayurveda">View details</button></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills" class="section">
+    <div class="container"><h2>Skills</h2>
+      <div class="skills-grid">
+        <div class="skill"><h4>Programming</h4><p>Python</p></div>
+        <div class="skill"><h4>Web</h4><p>HTML, CSS, Angular</p></div>
+        <div class="skill"><h4>Databases</h4><p>MySQL</p></div>
+        <div class="skill"><h4>Cloud</h4><p>AWS basics, Azure (AZ-900), Power Platform (PL-900)</p></div>
+        <div class="skill"><h4>Tools</h4><p>Salesforce, ML concepts</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="education" class="section section-alt">
+    <div class="container"><h2>Education & Certifications</h2>
+      <div class="edu-grid">
+        <div class="edu-card"><h3>B.Tech CSE</h3>
+          <p>Narasaraopeta Engg College (2020–24) — CGPA: 7.01</p></div>
+        <div class="edu-card"><h3>Certifications</h3>
+          <ul>
+            <li>NPTEL IoT (Silver Elite, 2024)</li>
+            <li>NPTEL Cloud Computing (2024)</li>
+            <li>AZ-900 Azure Fundamentals</li>
+            <li>PL-900 Power Platform Fundamentals</li>
+            <li>Python — Sololearn & Infosys</li>
+          </ul></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="section">
+    <div class="container contact-grid">
+      <div><h2>Contact</h2>
+        <p>Email me at <a href="mailto:Karisriharri@gmail.com">Karisriharri@gmail.com</a></p>
+        <ul class="contact-list">
+          <li><i class="fa fa-phone"></i> +91 89787 83886</li>
+          <li><i class="fa fa-map-marker-alt"></i> Andhra Pradesh</li>
+        </ul>
+      </div>
+      <form id="contact-form" class="contact-form" novalidate>
+        <label><span>Name</span><input type="text" name="name" required></label>
+        <label><span>Email</span><input type="email" name="email" required></label>
+        <label><span>Message</span><textarea name="message" rows="5" required></textarea></label>
+        <div class="form-actions"><button type="submit" class="btn-primary">Send</button></div>
+        <p id="form-status" class="form-status"></p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© <span id="year"></span> Kari Srihari</p>
+    <div class="social">
+      <a href="#"><i class="fa fa-github"></i></a>
+      <a href="#"><i class="fa fa-linkedin"></i></a>
+    </div>
+  </div>
+</footer>
+
+<!-- Modal -->
+<div id="project-modal" class="modal" aria-hidden="true">
+  <div class="modal-content">
+    <button id="modal-close" class="modal-close"><i class="fa fa-times"></i></button>
+    <div id="modal-body"></div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+  document.getElementById('year').textContent=new Date().getFullYear();
+  const navToggle=document.getElementById('nav-toggle'),nav=document.getElementById('nav');
+  navToggle.addEventListener('click',()=>{nav.style.display=nav.style.display==='flex'?'':'flex';nav.style.flexDirection='column';});
+
+  const PROJECTS={crop:{title:'Crop Recommendation System',subtitle:'Machine Learning',body:'Predicts best-fit crops using soil and weather data.'},
+                  ayurveda:{title:'Awareness of Ayurvedic',subtitle:'Angular Web App',body:'Created platform to spread Ayurvedic knowledge.'}};
+  const modal=document.getElementById('project-modal'),body=document.getElementById('modal-body');
+  document.querySelectorAll('[data-open]').forEach(btn=>btn.addEventListener('click',()=>{
+    const data=PROJECTS[btn.dataset.open]; if(!data)return;
+    body.innerHTML='<h2>'+data.title+'</h2><p class="muted">'+data.subtitle+'</p><p>'+data.body+'</p>';
+    modal.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';
+  }));
+  document.getElementById('modal-close').onclick=()=>{modal.setAttribute('aria-hidden','true');document.body.style.overflow='';};
+  modal.addEventListener('click',e=>{if(e.target===modal)modal.setAttribute('aria-hidden','true');});
+
+  const form=document.getElementById('contact-form'),status=document.getElementById('form-status');
+  form.addEventListener('submit',e=>{
+    e.preventDefault();
+    const name=form.name.value.trim(),email=form.email.value.trim(),msg=form.message.value.trim();
+    if(!name||!email||!msg){status.textContent='Fill all fields';return;}
+    if(!/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email)){status.textContent='Invalid email';return;}
+    status.textContent='Thanks — demo only (no backend).';form.reset();
+  });
+});
+</script>
+</body>
+</html>
